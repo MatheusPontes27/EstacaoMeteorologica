@@ -1,0 +1,69 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dados do ESP8266</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        .container { max-width: 800px; margin: auto; padding: 20px; }
+        .data-container {
+            background: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 { margin: 0; }
+        .data-item { font-size: 1.2em; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Dados do ESP8266</h2>
+        <div class="data-container">
+            <div class="data-item" id="timestamp">Data e Hora:</div>
+            <div class="data-item" id="temperature">Temperatura:</div>
+            <div class="data-item" id="humidity">Umidade:</div>
+        </div>
+    </div>
+    <script>
+        function formatDate(timestamp) {
+            const date = new Date(timestamp);
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const year = date.getFullYear();
+            const hours = String(date.getHours()).padStart(2, '0');
+            const minutes = String(date.getMinutes()).padStart(2, '0');
+            return `Data: ${day}/${month}/${year} , Hora: ${hours}:${minutes}`;
+        }
+
+        function fetchData() {
+            fetch('/api/data')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.length > 0) {
+                        const latestData = data[data.length - 1]; // Obtém o último dado
+                        document.getElementById('timestamp').innerText = formatDate(latestData.timestamp);
+                        document.getElementById('temperature').innerText = `Temperatura: ${latestData.temperature} °C`;
+                        document.getElementById('humidity').innerText = `Umidade: ${latestData.humidity} %`;
+                    }
+                })
+                .catch(error => {
+                    console.error('There has been a problem with your fetch operation:', error);
+                });
+        }
+
+        // Atualizar dados a cada 5 segundos
+        setInterval(fetchData, 5000);
+        fetchData(); // Fetch imediatamente
+    </script>
+</body>
+</html>
