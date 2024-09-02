@@ -5,20 +5,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dados Meteorológicos</title>
+    <title>Estação Meteorológica</title>
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Dados Meteorológicos</h1>
-        <div class="data-container">
-            <div class="data-item" id="timestamp-container">
+    <div class="weather-widget">
+        <header class="widget-header">
+            <h2>Local da Estação</h2>
+        </header>
+        <div class="weather-main">
+            <div class="weather-icon">
+                <!-- Aqui você pode adicionar uma imagem de ícone do tempo -->
+                <img src="./meteorology_5903803.png" alt="Icone de Clima">
+            </div>
+            <div class="weather-info">
                 <p id="timestamp">Data e Hora:</p>
-            </div>
-            <div class="data-item" id="temperature-container">
                 <p id="temperature">Temperatura:</p>
-            </div>
-            <div class="data-item" id="humidity-container">
                 <p id="humidity">Umidade:</p>
             </div>
         </div>

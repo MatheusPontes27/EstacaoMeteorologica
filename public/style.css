@@ -3,52 +3,73 @@
 /* styles.css */
 
 body {
-    background: linear-gradient(135deg, #0077be, #00aaff);
-    font-family: 'Arial', sans-serif;
-    color: #fff;
+    background: linear-gradient(135deg, #3a6ea5, #2b5876);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
+    font-family: 'Arial', sans-serif;
 }
 
-.container {
-    text-align: center;
+.weather-widget {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
     padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    background-color: rgba(0, 0, 0, 0.5);
-}
-
-h1 {
-    margin-bottom: 20px;
-    font-size: 2rem;
-    letter-spacing: 1px;
-}
-
-.data-container {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-}
-
-.data-item {
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, background-color 0.3s ease;
+    width: 300px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    color: white;
     text-align: center;
-    min-width: 120px;
 }
 
-.data-item p {
+.widget-header {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 15px;
+}
+
+.widget-header h2 {
     margin: 0;
-    font-size: 1.1rem;
+    font-size: 1.5rem;
+    font-weight: 400;
 }
 
-.data-item:hover {
-    transform: translateY(-10px);
-    background-color: rgba(255, 255, 255, 0.2);
+.weather-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.weather-icon img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+.weather-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.weather-info p {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+.weather-info p#timestamp:before {
+    content: '📆 ';
+}
+
+.weather-info p#temperature:before {
+    content: '🌡️ ';
+}
+
+.weather-info p#humidity:before {
+    content: '💧 ';
+}
+
+.weather-info:hover {
+    transform: translateY(-5px);
+    transition: transform 0.3s ease;
 }
