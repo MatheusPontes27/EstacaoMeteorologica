@@ -22,7 +22,7 @@
 
 <h2>🌐 Acesso ao Projeto</h2>
 <p>Você pode acessar o projeto através do link abaixo. Lembre-se de que os dados só serão exibidos caso a estação meteorológica esteja ligada:</p>
-<p><a href="estacao-meteorologica-jet.vercel.app" target="_blank">estacao-meteorologica-jet.vercel.app</a></p>
+<p><a href="https://estacao-meteorologica-jet.vercel.app" target="_blank">estacao-meteorologica-jet.vercel.app</a></p>
 
 <h2>🚀 Tecnologias Utilizadas</h2>
 <ul>
