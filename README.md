@@ -66,7 +66,7 @@ README.md               # Documentação do projeto
 <p>Após o deploy ou execução local, acesse a aplicação pelo navegador. A página irá exibir os dados da estação meteorológica, atualizando automaticamente a cada 5 segundos.</p>
 
 <h2>📸 Preview</h2>
-<p><img src="https://drive.google.com/file/d/1rvYBN4yEopjDZHulINcdxNqLQ5PYK7hN/view?usp=drive_link" alt="Preview do Projeto" style="width:100%; max-width:700px;"> <!-- Atualize com o link da imagem, se disponível --></p>
+<p><img src="https://uploaddeimagens.com.br/imagens/5WT9aEg" alt="Preview do Projeto" style="width:100%; max-width:700px;"></p>
 
 <h2>🤝 Contribuindo</h2>
 <p>Se quiser contribuir para o projeto, siga estas etapas:</p>
