@@ -1,43 +1,54 @@
 
 
 /* styles.css */
+
 body {
+    background: linear-gradient(135deg, #0077be, #00aaff);
     font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(135deg, #00bfff, #1e90ff);
     color: #fff;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
 }
 
 .container {
-    max-width: 800px;
-    margin: 50px auto;
+    text-align: center;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 h1 {
-    font-size: 2.5em;
     margin-bottom: 20px;
-    font-weight: bold;
+    font-size: 2rem;
+    letter-spacing: 1px;
 }
 
 .data-container {
-    background: rgba(0, 0, 0, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    display: flex;
+    gap: 20px;
+    justify-content: center;
 }
 
 .data-item {
-    font-size: 1.5em;
-    margin: 10px 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    text-align: center;
+    min-width: 120px;
 }
 
-@media (max-width: 600px) {
-    .data-item {
-        font-size: 1.2em;
-    }
+.data-item p {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.data-item:hover {
+    transform: translateY(-10px);
+    background-color: rgba(255, 255, 255, 0.2);
 }
