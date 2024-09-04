@@ -25,6 +25,7 @@ function fetchData() {
                 document.getElementById('temperature').innerText = `Temperatura: ${latestData.temperature} °C`;
                 document.getElementById('humidity').innerText = `Umidade: ${latestData.humidity} %`;
                 document.getElementById('offline-message').style.display = 'none'; // Esconde a mensagem de offline
+                document.getElementById('weather-info').style.display = 'block'; // Mostra os dados do tempo
             } else {
                 showOfflineMessage();
             }
@@ -46,7 +47,6 @@ function showOfflineMessage() {
         console.error('Elementos necessários não encontrados no DOM.');
     }
 }
-
 
 // Atualizar dados a cada 5 segundos
 setInterval(fetchData, 5000);
