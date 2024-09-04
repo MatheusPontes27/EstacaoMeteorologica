@@ -1,6 +1,5 @@
 
 
-// script.js
 function formatDate(timestamp) {
     const date = new Date(timestamp);
     const day = String(date.getDate()).padStart(2, '0');
@@ -25,11 +24,20 @@ function fetchData() {
                 document.getElementById('timestamp').innerText = formatDate(latestData.timestamp);
                 document.getElementById('temperature').innerText = `Temperatura: ${latestData.temperature} °C`;
                 document.getElementById('humidity').innerText = `Umidade: ${latestData.humidity} %`;
+                document.getElementById('offline-message').style.display = 'none'; // Esconde a mensagem de offline
+            } else {
+                showOfflineMessage();
             }
         })
         .catch(error => {
             console.error('There has been a problem with your fetch operation:', error);
+            showOfflineMessage();
         });
+}
+
+function showOfflineMessage() {
+    document.getElementById('weather-info').style.display = 'none'; // Esconde os dados do tempo
+    document.getElementById('offline-message').style.display = 'block'; // Mostra a mensagem de offline
 }
 
 // Atualizar dados a cada 5 segundos

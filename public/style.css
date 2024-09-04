@@ -12,6 +12,14 @@ body {
     font-family: 'Arial', sans-serif;
 }
 
+.offline-message {
+    color: #ff4c4c; /* Vermelho para indicar erro */
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 15px;
+    text-align: center;
+}
+
 .weather-widget {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 20px;
