@@ -54,5 +54,9 @@ function checkForOffline() {
 
 // Atualizar dados a cada 5 segundos
 setInterval(fetchData, 5000);
-setInterval(checkForOffline, 10000); // Verifica o status de offline a cada 10 segundos
-fetchData(); // Fetch imediatamente
+
+// Verificar o status de offline a cada 5 segundos (deve ser o mesmo intervalo para garantir que o estado seja detectado rapidamente)
+setInterval(checkForOffline, 5000);
+
+// Fetch imediatamente para garantir que a página exiba dados se disponíveis
+fetchData(); 
