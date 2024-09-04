@@ -22,6 +22,7 @@ function fetchData() {
             return response.json();
         })
         .then(data => {
+            console.log('Dados recebidos:', data); // Diagnóstico
             if (data && data.length > 0) {
                 const latestData = data[data.length - 1]; // Obtém o último dado
                 document.getElementById('timestamp').innerText = formatDate(latestData.timestamp);
@@ -31,16 +32,18 @@ function fetchData() {
                 document.getElementById('weather-info').style.display = 'block'; // Mostra os dados do tempo
                 lastDataReceivedTime = Date.now(); // Atualiza o tempo da última recepção de dados
             } else {
+                console.log('Sem dados, mostrando mensagem de offline'); // Diagnóstico
                 showOfflineMessage(); // Se não houver dados, exibe mensagem de offline
             }
         })
         .catch(error => {
-            console.error('There has been a problem with your fetch operation:', error);
+            console.error('Erro na operação fetch:', error);
             showOfflineMessage(); // Se houver erro na fetch, exibe mensagem de offline
         });
 }
 
 function showOfflineMessage() {
+    console.log('Exibindo mensagem de offline'); // Diagnóstico
     document.getElementById('weather-info').style.display = 'none'; // Esconde os dados do tempo
     document.getElementById('offline-message').style.display = 'block'; // Mostra a mensagem de offline
 }
@@ -48,7 +51,10 @@ function showOfflineMessage() {
 function checkForOffline() {
     const currentTime = Date.now();
     if (currentTime - lastDataReceivedTime > offlineThreshold) {
+        console.log('Detectado offline, atualizando a interface'); // Diagnóstico
         showOfflineMessage();
+    } else {
+        console.log('Dados recentes recebidos, mantendo a interface atual'); // Diagnóstico
     }
 }
 
@@ -59,4 +65,4 @@ setInterval(fetchData, 5000);
 setInterval(checkForOffline, 5000);
 
 // Fetch imediatamente para garantir que a página exiba dados se disponíveis
-fetchData(); 
+fetchData();
