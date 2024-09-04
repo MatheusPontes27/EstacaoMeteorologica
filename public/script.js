@@ -66,8 +66,6 @@ function checkForOffline() {
     if (currentTime - lastDataReceivedTime > offlineThreshold) {
         console.log('Detectado offline, atualizando a interface'); // Diagnóstico
         showOfflineMessage();
-    } else {
-        console.log('Dados recentes recebidos, mantendo a interface atual'); // Diagnóstico
     }
 }
 
