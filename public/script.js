@@ -36,9 +36,17 @@ function fetchData() {
 }
 
 function showOfflineMessage() {
-    document.getElementById('weather-info').style.display = 'none'; // Esconde os dados do tempo
-    document.getElementById('offline-message').style.display = 'block'; // Mostra a mensagem de offline
+    const weatherInfo = document.getElementById('weather-info');
+    const offlineMessage = document.getElementById('offline-message');
+    
+    if (weatherInfo && offlineMessage) {
+        weatherInfo.style.display = 'none'; // Esconde os dados do tempo
+        offlineMessage.style.display = 'block'; // Mostra a mensagem de offline
+    } else {
+        console.error('Elementos necessários não encontrados no DOM.');
+    }
 }
+
 
 // Atualizar dados a cada 5 segundos
 setInterval(fetchData, 5000);
