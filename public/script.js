@@ -23,14 +23,22 @@ function fetchData() {
         })
         .then(data => {
             console.log('Dados recebidos:', data); // Diagnóstico
+
+            // Adiciona verificação para dados válidos
             if (data && data.length > 0) {
                 const latestData = data[data.length - 1]; // Obtém o último dado
-                document.getElementById('timestamp').innerText = formatDate(latestData.timestamp);
-                document.getElementById('temperature').innerText = `Temperatura: ${latestData.temperature} °C`;
-                document.getElementById('humidity').innerText = `Umidade: ${latestData.humidity} %`;
-                document.getElementById('offline-message').style.display = 'none'; // Esconde a mensagem de offline
-                document.getElementById('weather-info').style.display = 'block'; // Mostra os dados do tempo
-                lastDataReceivedTime = Date.now(); // Atualiza o tempo da última recepção de dados
+
+                if (isValidData(latestData)) { // Verifica se os dados são válidos
+                    document.getElementById('timestamp').innerText = formatDate(latestData.timestamp);
+                    document.getElementById('temperature').innerText = `Temperatura: ${latestData.temperature} °C`;
+                    document.getElementById('humidity').innerText = `Umidade: ${latestData.humidity} %`;
+                    document.getElementById('offline-message').style.display = 'none'; // Esconde a mensagem de offline
+                    document.getElementById('weather-info').style.display = 'block'; // Mostra os dados do tempo
+                    lastDataReceivedTime = Date.now(); // Atualiza o tempo da última recepção de dados
+                } else {
+                    console.log('Dados recebidos inválidos, mostrando mensagem de offline'); // Diagnóstico
+                    showOfflineMessage(); // Se dados inválidos, exibe mensagem de offline
+                }
             } else {
                 console.log('Sem dados, mostrando mensagem de offline'); // Diagnóstico
                 showOfflineMessage(); // Se não houver dados, exibe mensagem de offline
@@ -40,6 +48,11 @@ function fetchData() {
             console.error('Erro na operação fetch:', error);
             showOfflineMessage(); // Se houver erro na fetch, exibe mensagem de offline
         });
+}
+
+function isValidData(data) {
+    // Adicione validações de dados conforme necessário. Exemplo:
+    return data.timestamp && data.temperature !== undefined && data.humidity !== undefined;
 }
 
 function showOfflineMessage() {
@@ -61,7 +74,7 @@ function checkForOffline() {
 // Atualizar dados a cada 5 segundos
 setInterval(fetchData, 5000);
 
-// Verificar o status de offline a cada 5 segundos (deve ser o mesmo intervalo para garantir que o estado seja detectado rapidamente)
+// Verificar o status de offline a cada 5 segundos
 setInterval(checkForOffline, 5000);
 
 // Fetch imediatamente para garantir que a página exiba dados se disponíveis
