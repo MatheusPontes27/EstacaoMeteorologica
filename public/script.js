@@ -48,7 +48,6 @@ function fetchData() {
                         document.getElementById('humidity').innerText = `Umidade: ${latestData.humidity} %`;
                         document.getElementById('pressure').innerText = `Pressão: ${latestData.pressure} hPa`;
                         document.getElementById('altitude').innerText = `Altitude: ${latestData.altitude} m`;
-
                         document.getElementById('offline-message').style.display = 'none';
                         document.getElementById('weather-info').style.display = 'block';
                         lastDataReceivedTime = Date.now();
@@ -71,8 +70,7 @@ function fetchData() {
 }
 
 function isValidData(data) {
-    return data.timestamp && data.temperature !== undefined && data.humidity !== undefined &&
-           data.pressure !== undefined && data.altitude !== undefined;
+    return data.timestamp && data.temperature !== undefined && data.humidity !== undefined && data.pressure !== undefined && data.altitude !== undefined;
 }
 
 function showOfflineMessage() {
@@ -89,6 +87,46 @@ function checkForOffline() {
     }
 }
 
+// Atualizar dados a cada 5 segundos
 setInterval(fetchData, 5000);
+
+// Verificar o status de offline a cada 5 segundos
 setInterval(checkForOffline, 5000);
+
+// Fetch imediatamente para garantir que a página exiba dados se disponíveis
 fetchData();
+
+// Função para capturar a localização do usuário
+function getUserLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+    } else {
+        document.getElementById('location').innerText = "Geolocalização não é suportada pelo seu navegador.";
+    }
+}
+
+function showPosition(position) {
+    const latitude = position.coords.latitude.toFixed(4);
+    const longitude = position.coords.longitude.toFixed(4);
+    document.getElementById('location').innerText = `Latitude: ${latitude}, Longitude: ${longitude}`;
+}
+
+function showError(error) {
+    switch (error.code) {
+        case error.PERMISSION_DENIED:
+            document.getElementById('location').innerText = "Permissão negada para acessar sua localização.";
+            break;
+        case error.POSITION_UNAVAILABLE:
+            document.getElementById('location').innerText = "Informações de localização indisponíveis.";
+            break;
+        case error.TIMEOUT:
+            document.getElementById('location').innerText = "A solicitação para obter a localização expirou.";
+            break;
+        case error.UNKNOWN_ERROR:
+            document.getElementById('location').innerText = "Ocorreu um erro desconhecido.";
+            break;
+    }
+}
+
+// Chama a função para obter a localização ao carregar a página
+getUserLocation();

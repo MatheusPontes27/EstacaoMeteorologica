@@ -12,6 +12,17 @@ body {
     font-family: 'Arial', sans-serif;
 }
 
+.weather-info p#location:before {
+    content: '📍 ';
+}
+
+.location-display {
+    font-size: 1.2rem;
+    color: white;
+    margin-top: 10px;
+    text-align: center;
+}
+
 .offline-message {
     color: #ff4c4c; /* Vermelho para indicar erro */
     font-size: 1.2rem;
