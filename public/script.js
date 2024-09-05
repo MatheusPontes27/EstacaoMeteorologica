@@ -48,6 +48,7 @@ function fetchData() {
                         document.getElementById('humidity').innerText = `Umidade: ${latestData.humidity} %`;
                         document.getElementById('pressure').innerText = `Pressão: ${latestData.pressure} hPa`;
                         document.getElementById('altitude').innerText = `Altitude: ${latestData.altitude} m`;
+                        document.getElementById('location').innerText = `Cidade: ${latestData.city}`;
                         document.getElementById('offline-message').style.display = 'none';
                         document.getElementById('weather-info').style.display = 'block';
                         lastDataReceivedTime = Date.now();
@@ -70,7 +71,7 @@ function fetchData() {
 }
 
 function isValidData(data) {
-    return data.timestamp && data.temperature !== undefined && data.humidity !== undefined && data.pressure !== undefined && data.altitude !== undefined;
+    return data.timestamp && data.temperature !== undefined && data.humidity !== undefined && data.pressure !== undefined && data.altitude !== undefined && data.city;
 }
 
 function showOfflineMessage() {
@@ -97,6 +98,8 @@ setInterval(checkForOffline, 5000);
 fetchData();
 
 // Função para capturar a localização do usuário
+// Comentado, pois agora estamos utilizando o nome da cidade
+/*
 function getUserLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition, showError);
@@ -130,3 +133,4 @@ function showError(error) {
 
 // Chama a função para obter a localização ao carregar a página
 getUserLocation();
+*/
