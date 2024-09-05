@@ -42,13 +42,15 @@ function fetchData() {
                 if (data.length > 0) {
                     const latestData = data[data.length - 1];
 
+                    console.log('Dados mais recentes:', latestData);
+
                     if (isValidData(latestData)) {
                         document.getElementById('timestamp').innerText = formatDate(latestData.timestamp);
                         document.getElementById('temperature').innerText = `Temperatura: ${latestData.temperature} °C`;
                         document.getElementById('humidity').innerText = `Umidade: ${latestData.humidity} %`;
                         document.getElementById('pressure').innerText = `Pressão: ${latestData.pressure} hPa`;
                         document.getElementById('altitude').innerText = `Altitude: ${latestData.altitude} m`;
-                        document.getElementById('city').innerText = `Cidade: ${latestData.city}`;
+                        document.getElementById('city').innerText = `Cidade: ${latestData.city || 'Não disponível'}`;
                         document.getElementById('offline-message').style.display = 'none';
                         document.getElementById('weather-info').style.display = 'block';
                         lastDataReceivedTime = Date.now();
@@ -71,7 +73,7 @@ function fetchData() {
 }
 
 function isValidData(data) {
-    return data.timestamp && data.temperature !== undefined && data.humidity !== undefined && data.pressure !== undefined && data.altitude !== undefined && data.city;
+    return data.timestamp && data.temperature !== undefined && data.humidity !== undefined && data.pressure !== undefined && data.altitude !== undefined;
 }
 
 function showOfflineMessage() {
