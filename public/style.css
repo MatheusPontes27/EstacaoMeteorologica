@@ -12,30 +12,11 @@ body {
     font-family: 'Arial', sans-serif;
 }
 
-.weather-info p#location:before {
-    content: '📍 ';
-}
-
-.location-display {
-    font-size: 1.2rem;
-    color: white;
-    margin-top: 10px;
-    text-align: center;
-}
-
-.offline-message {
-    color: #ff4c4c; /* Vermelho para indicar erro */
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-top: 15px;
-    text-align: center;
-}
-
 .weather-widget {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     padding: 20px;
-    width: 300px;
+    width: 320px; /* Aumentado para acomodar novos elementos */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
     color: white;
     text-align: center;
@@ -68,11 +49,12 @@ body {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    font-size: 1.1rem; /* Ajustado para melhor leitura */
 }
 
 .weather-info p {
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 1.1rem; /* Ajustado para melhor leitura */
     font-weight: 300;
 }
 
@@ -89,14 +71,26 @@ body {
 }
 
 .weather-info p#pressure:before {
-    content: '🔽 '; /* Ícone para pressão */
+    content: '🌬️ ';
 }
 
 .weather-info p#altitude:before {
-    content: '🗻 '; /* Ícone para altitude */
+    content: '🌄 ';
+}
+
+.weather-info p#city:before {
+    content: '🏙️ ';
 }
 
 .weather-info:hover {
     transform: translateY(-5px);
     transition: transform 0.3s ease;
+}
+
+.offline-message {
+    color: #ff4c4c; /* Vermelho para indicar erro */
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 15px;
+    text-align: center;
 }
